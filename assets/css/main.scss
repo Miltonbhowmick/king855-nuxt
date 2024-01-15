@@ -1,0 +1,50 @@
+
+html{
+	margin: 0;
+	height: 100%;
+}
+
+body{
+	margin: 0;
+	height: 100%;
+	background: none repeat scroll 0 0 #fff;
+	color: #041e3a;
+	font-family: RL_DroidKufi,Founders Grotesk text Regular,Helvetica,Arial,sans-serif;
+	font-size: 12px;
+}
+
+a{
+	text-decoration: none;
+}
+
+img {
+	height: 100%;
+	width: 100%;
+	flex-shrink: 0;
+	-webkit-flex-shrink: 0;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+.mt-60{
+	margin-top:60px;
+}
+
+.bg-black{
+	background-color: #000;
+}
+
+.bg-white{
+	background-color: #fff;
+}
+.bg-pink{
+	background-color: pink;
+}
+.bg-green{
+	background-color: green;
+}
+.align-right {
+	text-align: right;
+}
+.align-left {
+	text-align: left;
+}

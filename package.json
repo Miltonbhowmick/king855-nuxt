@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "^3.9.1",
+    "sass": "^1.69.7",
+    "vue": "^3.4.10",
+    "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@jambonn/vue-concise-carousel": "^2.1.31",
+    "@pinia/nuxt": "^0.5.1",
+    "pinia": "^2.1.7"
+  }
+}
