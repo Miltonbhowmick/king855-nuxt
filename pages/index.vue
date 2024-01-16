@@ -83,11 +83,16 @@
                             :key="'hot_' + hotId"
                             class="item"
                         >
-                            <div class="image">
-                                <img
-                                    :src="hotItem.imageSrc"
-                                    :alt="'image_' + hotItem.name"
-                                />
+                            <div class="content">
+                                <div class="image">
+                                    <img
+                                        :src="hotItem.imageSrc"
+                                        :alt="'image_' + hotItem.name"
+                                    />
+                                </div>
+                                <div class="overlay-content">
+                                    <a class="join-btn">join</a>
+                                </div>
                             </div>
                             <em class="hot-name">{{ hotItem.name }} </em>
                         </div>
@@ -227,14 +232,14 @@ let supplierItemList = [
                     .content {
                         position: absolute;
                         right: 10%;
-                        bottom: 8px;
+                        bottom: 15%;
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
                         .brand-name {
                             margin: 16px 0;
-                            font-size: 22px;
+                            font-size: 20px;
                             font-style: normal;
                         }
                         .join-btn {
@@ -278,10 +283,52 @@ let supplierItemList = [
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    .image {
-                        border-radius: 10px;
-                        overflow: hidden;
+                    .content {
+                        position: relative;
+                        &:hover {
+                            .overlay-content {
+                                display: block;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background: rgb(0, 0, 0, 0.2);
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                            }
+                        }
+                        .image {
+                            border-radius: 10px;
+                            overflow: hidden;
+                        }
+
+                        .overlay-content {
+                            display: none;
+
+                            .join-btn {
+                                margin: 0 2px;
+                                padding: 6px 45px;
+                                border-radius: 15px;
+                                background: linear-gradient(
+                                    0deg,
+                                    #ef8f27 0%,
+                                    #f5bc5e 100%
+                                );
+                                cursor: pointer;
+                                font-size: 0.88rem;
+                                &:hover {
+                                    background: linear-gradient(
+                                        0deg,
+                                        #dc0c51 0%,
+                                        #ff8282 100%
+                                    );
+                                }
+                            }
+                        }
                     }
+
                     .hot-name {
                         font-size: 16px;
                         margin: 5px 0;

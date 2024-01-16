@@ -5,19 +5,21 @@
                 <a><img src="/images/company-logo.png" alt="company-logo" /></a>
                 <div class="notice">
                     <div class="notice-arrow">
-                        <i class="icon-web-html"></i>
+                        <i class="fa fa-volume-up" aria-hidden="true"></i>
                     </div>
-                    <marquee class="marquee" direction="left" scrollamount="4">
+                    <!-- <marquee class="marquee" direction="left" scrollamount="4">
                         <span class="notice-text"
                             >KING855 网上博彩 有你才精彩 KING855
                             打开富贵门</span
                         ></marquee
-                    >
+                    > -->
                 </div>
             </div>
             <div class="header-nav-links">
                 <div class="login-before">
-                    <a class="btn login-btn">Login</a>
+                    <a @click="showLoginModal = true" class="btn login-btn"
+                        >Login</a
+                    >
                     <a class="btn free-btn">Free</a>
                 </div>
                 <div class="login-after"></div>
@@ -31,10 +33,20 @@
                 </div>
             </div>
         </div>
+        <ModalLogin
+            v-if="showLoginModal"
+            :modalOpen="showLoginModal"
+            @hideModal="hideLoginModal"
+        />
     </header>
 </template>
 
 <script setup>
+var showLoginModal = ref(false);
+
+const hideLoginModal = () => {
+    showLoginModal.value = false;
+};
 </script>
 
 <style scoped lang="scss">
@@ -98,9 +110,11 @@
                     margin-right: 10px;
                     font-size: 0.875rem;
                     &.login-btn {
+                        cursor: pointer;
                         border: 1px solid rgb(19, 191, 255);
                     }
                     &.free-btn {
+                        cursor: pointer;
                         background: rgb(255, 0, 59);
                     }
                 }
