@@ -7,14 +7,28 @@ html{
 body{
 	margin: 0;
 	height: 100%;
-	background: none repeat scroll 0 0 #fff;
-	color: #041e3a;
-	font-family: RL_DroidKufi,Founders Grotesk text Regular,Helvetica,Arial,sans-serif;
+	color: #fff;
+	font-family: 'Microsoft YaHei', sans-serif;
 	font-size: 12px;
+	background-image: url('/images/body-bg.jpg');
+	background-attachment: fixed;
+	background-position-x: center;
+	background-position-y: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-origin: initial;
+	background-clip: initial;
+	background-color: rgb(9, 2, 35);
+
 }
 
 a{
 	text-decoration: none;
+}
+ul{
+	margin: 0;
+	padding: 0;
 }
 
 img {
