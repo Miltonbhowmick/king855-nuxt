@@ -11,7 +11,7 @@
                 <slide class="cs-slide">
                     <div class="banner">
                         <img
-                            src="/images/slide/banner1_en.jpg"
+                            src="/images/mobile-slide/banner1_en.jpg"
                             alt="banner1_en"
                         />
                     </div>
@@ -19,7 +19,7 @@
                 <slide class="cs-slide">
                     <div class="banner">
                         <img
-                            src="/images/slide/banner2_en.jpg"
+                            src="/images/mobile-slide/banner2_en.jpg"
                             alt="banner1_en"
                         />
                     </div>
@@ -27,12 +27,30 @@
                 <slide class="cs-slide">
                     <div class="banner">
                         <img
-                            src="/images/slide/banner3_en.jpg"
+                            src="/images/mobile-slide/banner3_en.jpg"
                             alt="banner1_en"
                         />
                     </div>
                 </slide>
             </carousel>
+        </div>
+        <div class="mobile-login-header">
+            <div class="news-box">
+                <div class="notice-arrow">
+                    <i class="fa fa-volume-up" aria-hidden="true"></i>
+                </div>
+                <marquee class="marquee" direction="left" scrollamount="4">
+                    <span class="notice-text"
+                        >KING855 网上博彩 有你才精彩 KING855 打开富贵门</span
+                    ></marquee
+                >
+            </div>
+            <div class="buttons">
+                <a @click="showLoginModal = true" class="btn login-btn"
+                    >Login</a
+                >
+                <a class="btn free-btn">Free</a>
+            </div>
         </div>
         <div class="game-content-list">
             <div class="category-list">
@@ -168,6 +186,71 @@ let supplierItemList = [
 </script>
 
 <style scoped lang="scss">
+.slider-box {
+    padding: 0 1.1rem;
+    @media (max-width: 768px) {
+        .cs-slide {
+            .banner {
+                height: 290px;
+                border-radius: 25px;
+                overflow: hidden;
+                img {
+                    border-radius: 25px;
+                }
+            }
+        }
+    }
+}
+.mobile-login-header {
+    @media (max-width: 768px) {
+        margin: 1.1rem;
+        border-radius: 0.3rem;
+        background: #1a1a1a;
+        border: 1px solid #393657;
+        padding: 1.1rem;
+        .news-box {
+            padding: 18px 0;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            .notice-arrow {
+                width: 3.9rem;
+                line-height: 0.68rem;
+                padding-left: 0.2rem;
+                font-size: 1.8rem;
+                color: #0890fc;
+            }
+            .marquee {
+                .notice-text {
+                    font-size: 22px;
+                }
+            }
+        }
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            .btn {
+                width: 50%;
+                padding: 15px 0;
+                font-size: 1.64rem;
+                color: #fff;
+                text-align: center;
+                border-radius: 8px;
+                &.login-btn {
+                    background: linear-gradient(0deg, #27478e 0%, #3f3c6f 100%);
+                    border: 1px solid #5a567f;
+                }
+                &.free-btn {
+                    background: #ff003b;
+                    color: #fff;
+                    border: none;
+                }
+            }
+        }
+    }
+}
 .game-content-list {
     box-sizing: border-box;
     padding: 10px 10%;
@@ -250,6 +333,8 @@ let supplierItemList = [
                                 #ef8f27 0%,
                                 #f5bc5e 100%
                             );
+                            text-align: center;
+                            text-transform: capitalize;
                             cursor: pointer;
                             font-size: 0.88rem;
                             &:hover {
@@ -293,7 +378,7 @@ let supplierItemList = [
                                 left: 0;
                                 right: 0;
                                 bottom: 0;
-                                background: rgb(0, 0, 0, 0.2);
+                                background: rgb(0, 0, 0, 0.7);
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
@@ -309,13 +394,15 @@ let supplierItemList = [
 
                             .join-btn {
                                 margin: 0 2px;
-                                padding: 6px 45px;
+                                padding: 8px 45px;
                                 border-radius: 15px;
                                 background: linear-gradient(
                                     0deg,
                                     #ef8f27 0%,
                                     #f5bc5e 100%
                                 );
+                                text-align: center;
+                                text-transform: capitalize;
                                 cursor: pointer;
                                 font-size: 0.88rem;
                                 &:hover {

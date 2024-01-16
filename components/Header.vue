@@ -7,12 +7,12 @@
                     <div class="notice-arrow">
                         <i class="fa fa-volume-up" aria-hidden="true"></i>
                     </div>
-                    <!-- <marquee class="marquee" direction="left" scrollamount="4">
+                    <marquee class="marquee" direction="left" scrollamount="4">
                         <span class="notice-text"
                             >KING855 网上博彩 有你才精彩 KING855
                             打开富贵门</span
                         ></marquee
-                    > -->
+                    >
                 </div>
             </div>
             <div class="header-nav-links">
@@ -38,6 +38,18 @@
             :modalOpen="showLoginModal"
             @hideModal="hideLoginModal"
         />
+    </header>
+    <header class="mobile-header">
+        <div class="head-box">
+            <div class="logo">
+                <a><img src="/images/company-logo.png" alt="company-logo" /></a>
+            </div>
+            <div class="head-language">
+                <div class="current-language">
+                    <img src="/images/flag/Flag-Taiwan.png" alt="flag-taiwan" />
+                </div>
+            </div>
+        </div>
     </header>
 </template>
 
@@ -125,6 +137,37 @@ const hideLoginModal = () => {
                     width: 30px;
                     height: 30px;
                     overflow: hidden;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+.mobile-header {
+    height: 5.18rem;
+    display: none;
+    @media (max-width: 768px) {
+        display: block;
+        .head-box {
+            padding: 10px 1.3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background: #191919;
+            height: 100%;
+            box-sizing: border-box;
+            .head-language {
+                width: 100px;
+                display: flex;
+                justify-content: flex-end;
+                .current-language {
+                    width: 50px;
+                    height: 51px;
                 }
             }
         }
