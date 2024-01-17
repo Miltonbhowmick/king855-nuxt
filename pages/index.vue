@@ -11,6 +11,40 @@
                 <slide class="cs-slide">
                     <div class="banner">
                         <img
+                            src="/images/slide/banner1_en.jpg"
+                            alt="banner1_en"
+                        />
+                    </div>
+                </slide>
+                <slide class="cs-slide">
+                    <div class="banner">
+                        <img
+                            src="/images/slide/banner2_en.jpg"
+                            alt="banner1_en"
+                        />
+                    </div>
+                </slide>
+                <slide class="cs-slide">
+                    <div class="banner">
+                        <img
+                            src="/images/slide/banner3_en.jpg"
+                            alt="banner1_en"
+                        />
+                    </div>
+                </slide>
+            </carousel>
+        </div>
+        <div class="mobile-slider-box">
+            <carousel
+                :perPage="1"
+                :navigationEnabled="false"
+                :paginationEnabled="false"
+                :loop="true"
+                :autoplay="true"
+            >
+                <slide class="cs-slide">
+                    <div class="banner">
+                        <img
                             src="/images/mobile-slide/banner1_en.jpg"
                             alt="banner1_en"
                         />
@@ -83,26 +117,33 @@
                 <div class="supplier-list">
                     <h2 class="title">Supplier</h2>
                     <div class="items">
-                        <div
-                            v-for="(
-                                supplierItem, supplierId
-                            ) in supplierItemList"
-                            :key="'supplier_' + supplierId"
-                            class="item"
+                        <carousel
+                            :per-page="1"
+                            :navigationEnabled="true"
+                            :paginationEnabled="false"
                         >
-                            <div class="bg-image">
-                                <img
-                                    :src="supplierItem.imageSrc"
-                                    :alt="supplierItem.brandName"
-                                />
-                            </div>
-                            <div class="content">
-                                <em class="brand-name">{{
-                                    supplierItem.brandName
-                                }}</em
-                                ><a class="join-btn">join</a>
-                            </div>
-                        </div>
+                            <slide
+                                v-for="(
+                                    supplierItem, supplierId
+                                ) in supplierItemList"
+                                :key="'supplier_' + supplierId"
+                            >
+                                <div class="item">
+                                    <div class="bg-image">
+                                        <img
+                                            :src="supplierItem.imageSrc"
+                                            :alt="supplierItem.brandName"
+                                        />
+                                    </div>
+                                    <div class="content">
+                                        <em class="brand-name">{{
+                                            supplierItem.brandName
+                                        }}</em
+                                        ><a class="join-btn">join</a>
+                                    </div>
+                                </div>
+                            </slide>
+                        </carousel>
                     </div>
                 </div>
                 <div class="hot-list">
@@ -299,9 +340,11 @@ let supplierItemList = [
 </script>
 
 <style scoped lang="scss">
-.slider-box {
-    padding: 0 1.1rem;
+.mobile-slider-box {
+    display: none;
     @media (max-width: 768px) {
+        display: block;
+        padding: 0 1.1rem;
         .cs-slide {
             .banner {
                 height: 290px;
@@ -548,7 +591,7 @@ let supplierItemList = [
 .mobile-game-content-list {
     display: none;
     @media (max-width: 768px) {
-        padding: 0 1.1rem;
+        padding: 0 1.1rem 20px 1.1rem;
         display: flex;
         gap: 15px;
         .category-list {
@@ -576,6 +619,12 @@ let supplierItemList = [
                     background: linear-gradient(0deg, #27478e 0%, #3f3c6f 100%);
                     box-shadow: 0 1px #5bb2f6;
                 }
+                @media (max-width: 576px) {
+                    height: 18vw;
+                }
+                @media (max-width: 431px) {
+                    height: 25vw;
+                }
             }
         }
         .data-list {
@@ -588,19 +637,50 @@ let supplierItemList = [
                     border-left: 3px solid #5bb2f6;
                 }
                 .items {
-                    display: flex;
+                    // display: flex;
                     // flex-wrap: wrap;
-                    justify-content: flex-start;
-                    gap: 5px 8px;
-                    max-width: 300px;
-                    overflow-x: auto;
+                    // justify-content: flex-start;
+                    // gap: 5px 8px;
+                    // max-width: 300px;
+                    // overflow-x: auto;
                     .item {
-                        width: 70%;
+                        width: max-content;
                         position: relative;
                         .bg-image {
                             width: 450px;
                             border-radius: 10px;
                             overflow: hidden;
+                        }
+                        .content {
+                            position: absolute;
+                            right: 5%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 10px;
+                            .brand-name {
+                                font-style: normal;
+                                font-size: 30px;
+                                font-weight: 400;
+                                color: #fff;
+                            }
+                            .join-btn {
+                                padding: 10px 45px;
+                                border-radius: 50px;
+
+                                text-align: center;
+                                text-transform: capitalize;
+                                cursor: pointer;
+                                font-size: 30px;
+                                font-weight: 400;
+                                background: linear-gradient(
+                                    0deg,
+                                    #dc0c51 0%,
+                                    #ff8282 100%
+                                );
+                            }
                         }
                     }
                 }
@@ -636,10 +716,47 @@ let supplierItemList = [
                                 color: #fff;
                             }
                         }
+
+                        @media (max-width: 576px) {
+                            width: 48%;
+                        }
+                        @media (max-width: 431px) {
+                            width: 100%;
+                        }
                     }
                 }
             }
+            @media (max-width: 576px) {
+                margin-top: 30px;
+            }
         }
     }
+}
+
+:deep(.VueCarousel-slide) {
+    width: 30px;
+}
+:deep(.VueCarousel-navigation) {
+    position: absolute;
+    right: 3.5rem;
+    top: -40px;
+    width: 10px;
+}
+:deep(.VueCarousel-navigation-button) {
+    width: 3.7rem;
+    height: 3.6rem;
+    border: 1px solid #333333;
+    padding: 0 !important;
+    font-family: none;
+    color: #fff;
+    font-size: 35px;
+}
+:deep(.VueCarousel-navigation-prev) {
+    background: linear-gradient(0deg, #2f2b4f 0%, #201e3a 100%);
+    border-radius: 50% 0rem 0rem 50% !important;
+}
+:deep(.VueCarousel-navigation-next) {
+    background: linear-gradient(0deg, #2f2b4f 0%, #201e3a 100%);
+    border-radius: 0rem 50% 50% 0rem !important;
 }
 </style>

@@ -149,7 +149,7 @@
                     align-items: self-start;
                     margin-right: 60px;
                     &.wd-20 {
-                        width: 20%;
+                        width: 15%;
                     }
                     .connect-top {
                         width: 100%;

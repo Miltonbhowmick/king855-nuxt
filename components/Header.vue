@@ -148,12 +148,12 @@ const hideLoginModal = () => {
 }
 
 .mobile-header {
-    height: 5.18rem;
+    height: 5.8rem;
     display: none;
     @media (max-width: 768px) {
         display: block;
         .head-box {
-            padding: 10px 1.3rem;
+            padding: 15px 1.3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -166,8 +166,8 @@ const hideLoginModal = () => {
                 display: flex;
                 justify-content: flex-end;
                 .current-language {
-                    width: 50px;
-                    height: 51px;
+                    width: 60px;
+                    height: 61px;
                 }
             }
         }
