@@ -340,6 +340,11 @@ let supplierItemList = [
 </script>
 
 <style scoped lang="scss">
+.slider-box {
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
 .mobile-slider-box {
     display: none;
     @media (max-width: 768px) {
