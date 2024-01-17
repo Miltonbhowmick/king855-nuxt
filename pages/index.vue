@@ -535,7 +535,6 @@ let supplierItemList = [
                         position: relative;
                         &:hover {
                             .overlay-content {
-                                display: block;
                                 position: absolute;
                                 top: 0;
                                 left: 0;
@@ -545,6 +544,7 @@ let supplierItemList = [
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
+                                align-items: center;
                             }
                         }
                         .image {
@@ -556,8 +556,9 @@ let supplierItemList = [
                             display: none;
 
                             .join-btn {
-                                margin: 0 2px;
-                                padding: 8px 45px;
+                                display: block;
+                                width: 70%;
+                                padding: 6px 0;
                                 border-radius: 15px;
                                 background: linear-gradient(
                                     0deg,
@@ -568,13 +569,6 @@ let supplierItemList = [
                                 text-transform: capitalize;
                                 cursor: pointer;
                                 font-size: 0.88rem;
-                                &:hover {
-                                    background: linear-gradient(
-                                        0deg,
-                                        #dc0c51 0%,
-                                        #ff8282 100%
-                                    );
-                                }
                             }
                         }
                     }
