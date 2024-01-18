@@ -80,12 +80,15 @@
                 >
             </div>
             <div class="buttons">
-                <a @click="showLoginModal = true" class="btn login-btn"
+                <a @click="showMobileLoginModal = true" class="btn login-btn"
                     >Login</a
                 >
                 <a class="btn free-btn">Free</a>
             </div>
-            <ModalMobileLogin />
+            <ModalMobileLogin
+                v-if="showMobileLoginModal"
+                @hideModal="hideMobileLoginModal"
+            />
         </div>
         <div class="mobile-game-content-list">
             <div class="category-list">
@@ -229,6 +232,12 @@
 </template>
 
 <script setup>
+var showMobileLoginModal = ref(false);
+
+const hideMobileLoginModal = () => {
+    showMobileLoginModal.value = false;
+};
+
 let categoryList = [
     {
         id: 1,

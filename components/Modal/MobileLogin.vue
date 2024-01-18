@@ -1,6 +1,9 @@
 <template>
     <section class="mobile-login-modal">
         <div class="modal-container">
+            <a @click="close" class="close"
+                ><i class="fa fa-times" aria-hidden="true"></i>
+            </a>
             <div class="header">
                 <a class="company-link"
                     ><div class="image">
@@ -32,6 +35,11 @@
 </template>
 
 <script setup>
+const emit = defineEmits();
+
+const close = () => {
+    emit("hideModal");
+};
 </script>
 
 <style scoped lang="scss">
@@ -47,6 +55,15 @@ section.mobile-login-modal {
     background-image: linear-gradient(90deg, #010101, #3c3c3c);
     .modal-container {
         margin-top: 90px;
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            i {
+                color: #fff;
+                font-size: 25px;
+            }
+        }
         .header {
             display: flex;
             justify-content: center;
