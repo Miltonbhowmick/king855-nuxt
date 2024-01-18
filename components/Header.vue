@@ -2,7 +2,9 @@
     <header class="header">
         <div class="head-box">
             <div class="logo">
-                <a><img src="/images/company-logo.png" alt="company-logo" /></a>
+                <a class="company-link"
+                    ><img src="/images/company-logo.png" alt="company-logo"
+                /></a>
                 <div class="notice">
                     <div class="notice-arrow">
                         <i class="fa fa-volume-up" aria-hidden="true"></i>
@@ -42,7 +44,9 @@
     <header class="mobile-header">
         <div class="head-box">
             <div class="logo">
-                <a><img src="/images/company-logo.png" alt="company-logo" /></a>
+                <a class="company-link"
+                    ><img src="/images/company-logo.png" alt="company-logo"
+                /></a>
             </div>
             <div class="head-language">
                 <div class="current-language">
@@ -148,9 +152,9 @@ const hideLoginModal = () => {
 }
 
 .mobile-header {
-    height: 5.8rem;
     display: none;
     @media (max-width: 768px) {
+        height: 2.8rem;
         display: block;
         .head-box {
             padding: 15px 1.3rem;
@@ -161,6 +165,14 @@ const hideLoginModal = () => {
             background: #191919;
             height: 100%;
             box-sizing: border-box;
+            .logo {
+                .company-link {
+                    display: block;
+                    @media (max-width: 431px) {
+                        width: 51%;
+                    }
+                }
+            }
             .head-language {
                 width: 100px;
                 display: flex;
@@ -168,7 +180,15 @@ const hideLoginModal = () => {
                 .current-language {
                     width: 60px;
                     height: 61px;
+                    @media (max-width: 431px) {
+                        width: 32px;
+                        height: 33px;
+                    }
                 }
+            }
+            @media (max-width: 431px) {
+                padding: 15px 0.8rem;
+                height: 2.9rem;
             }
         }
     }

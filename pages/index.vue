@@ -85,32 +85,21 @@
                 >
                 <a class="btn free-btn">Free</a>
             </div>
+            <ModalMobileLogin />
         </div>
         <div class="mobile-game-content-list">
             <div class="category-list">
-                <div class="item active">
+                <div
+                    v-for="(categoryObj, categoryId) in categoryList"
+                    :key="'category_' + categoryId"
+                    class="item"
+                    :class="{ active: activeCategory.id === categoryObj.id }"
+                    @click="handleActiveCategory(categoryObj)"
+                >
                     <div class="image">
-                        <img src="/images/tab-icon-1.png" />
+                        <img :src="categoryObj?.src" />
                     </div>
-                    <a class="name">Casino</a>
-                </div>
-                <div class="item">
-                    <div class="image">
-                        <img src="/images/tab-icon-1.png" />
-                    </div>
-                    <a class="name">Casino</a>
-                </div>
-                <div class="item">
-                    <div class="image">
-                        <img src="/images/tab-icon-1.png" />
-                    </div>
-                    <a class="name">Casino</a>
-                </div>
-                <div class="item">
-                    <div class="image">
-                        <img src="/images/tab-icon-1.png" />
-                    </div>
-                    <a class="name">Casino</a>
+                    <a class="name">{{ categoryObj?.name }}</a>
                 </div>
             </div>
             <div class="data-list">
@@ -125,7 +114,7 @@
                             <slide
                                 v-for="(
                                     supplierItem, supplierId
-                                ) in supplierItemList"
+                                ) in activeSupplier.itemList"
                                 :key="'supplier_' + supplierId"
                             >
                                 <div class="item">
@@ -150,7 +139,9 @@
                     <h3 class="title">Hot</h3>
                     <div class="hot-items">
                         <div
-                            v-for="(hotItem, hotId) in mobileHotItemList"
+                            v-for="(
+                                hotItem, hotId
+                            ) in activeMobileHotItems.itemList"
                             :key="'hot_' + hotId"
                             class="item"
                         >
@@ -170,17 +161,17 @@
         </div>
         <div class="game-content-list">
             <div class="category-list">
-                <div class="item active">
+                <div
+                    v-for="(categoryObj, categoryId) in categoryList"
+                    :key="'category_' + categoryId"
+                    class="item"
+                    :class="{ active: activeCategory.id === categoryObj.id }"
+                    @click="handleActiveCategory(categoryObj)"
+                >
                     <div class="image">
-                        <img src="/images/tab-icon-1.png" />
+                        <img :src="categoryObj?.src" />
                     </div>
-                    <a class="name">Casino</a>
-                </div>
-                <div class="item">
-                    <div class="image">
-                        <img src="/images/tab-icon-1.png" />
-                    </div>
-                    <a class="name">Casino</a>
+                    <a class="name">{{ categoryObj?.name }}</a>
                 </div>
             </div>
             <div class="data-list">
@@ -190,7 +181,7 @@
                         <div
                             v-for="(
                                 supplierItem, supplierId
-                            ) in supplierItemList"
+                            ) in activeSupplier.itemList"
                             :key="'supplier_' + supplierId"
                             class="item"
                         >
@@ -213,7 +204,7 @@
                     <h3 class="title">Hot</h3>
                     <div class="hot-items">
                         <div
-                            v-for="(hotItem, hotId) in hotItemList"
+                            v-for="(hotItem, hotId) in activeHotItems.itemList"
                             :key="'hot_' + hotId"
                             class="item"
                         >
@@ -238,105 +229,228 @@
 </template>
 
 <script setup>
+let categoryList = [
+    {
+        id: 1,
+        name: "Casino",
+        src: "/images/tab-icon-1.png",
+    },
+    {
+        id: 2,
+        name: "Sports",
+        src: "/images/tab-icon-2.png",
+    },
+    {
+        id: 3,
+        name: "Slots",
+        src: "/images/tab-icon-3.png",
+    },
+    {
+        id: 4,
+        name: "Chess",
+        src: "/images/tab-icon-7.png",
+    },
+    {
+        id: 5,
+        name: "Fish",
+        src: "/images/tab-icon-100.png",
+    },
+];
+var activeCategory = ref(categoryList[0]);
+
 let hotItemList = [
     {
-        imageSrc: "/images/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/hot-102-20101.png",
-        name: "Rapid Baccarat",
+        categoryId: 1,
+        itemList: [
+            {
+                imageSrc: "/images/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+        ],
     },
 ];
 let mobileHotItemList = [
     {
-        imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
-        name: "Rapid Baccarat",
-    },
-    {
-        imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
-        name: "Rapid Baccarat",
+        categoryId: 1,
+        itemList: [
+            {
+                imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+            {
+                imageSrc: "/images/mobile-hot-list/hot-102-20101.png",
+                name: "Rapid Baccarat",
+            },
+        ],
     },
 ];
 
 let supplierItemList = [
     {
-        imageSrc: "/images/supplier-102.png",
-        brandName: "CT Live",
+        categoryId: 1,
+        itemList: [
+            {
+                imageSrc: "/images/supplier-102.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/supplier-102.png",
+                brandName: "BG Live",
+            },
+        ],
     },
     {
-        imageSrc: "/images/supplier-102.png",
-        brandName: "BG Live",
+        categoryId: 2,
+        itemList: [
+            {
+                imageSrc: "/images/supplier-205.png",
+                brandName: "CT Live",
+            },
+        ],
     },
     {
-        imageSrc: "/images/supplier-102.png",
-        brandName: "BG Live",
+        categoryId: 3,
+        itemList: [
+            {
+                imageSrc: "/images/supplier-301.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/supplier-302.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/supplier-308.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/supplier-704.png",
+                brandName: "CT Live",
+            },
+        ],
     },
     {
-        imageSrc: "/images/supplier-102.png",
-        brandName: "BG Live",
+        categoryId: 4,
+        itemList: [
+            {
+                imageSrc: "/images/supplier-702.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/supplier-704.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/supplier-706.png",
+                brandName: "CT Live",
+            },
+        ],
     },
     {
-        imageSrc: "/images/supplier-102.png",
-        brandName: "BG Live",
+        categoryId: 5,
+        itemList: [
+            {
+                imageSrc: "/images/hot-302-7001.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/hot-302-7002.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/hot-302-7003.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/hot-302-7004.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/hot-302-7005.png",
+                brandName: "CT Live",
+            },
+            {
+                imageSrc: "/images/hot-302-7006.png",
+                brandName: "CT Live",
+            },
+        ],
     },
 ];
+
+var activeSupplier = ref(supplierItemList[0]);
+var activeHotItems = ref(hotItemList[0]);
+var activeMobileHotItems = ref(mobileHotItemList[0]);
+
+const handleActiveCategory = (categoryObj) => {
+    activeCategory.value = categoryObj;
+    activeSupplier.value = supplierItemList.find(
+        (element) => element.categoryId === categoryObj.id
+    );
+    // console.log("=====", activeSupplier.value);
+    // activeHotItems.value = hotItemList.find(
+    //     (element) => element.categoryId === categoryObj.id
+    // );
+};
 </script>
 
 <style scoped lang="scss">
@@ -355,10 +469,14 @@ let supplierItemList = [
                 height: 290px;
                 border-radius: 25px;
                 overflow: hidden;
-                img {
-                    border-radius: 25px;
+                @media (max-width: 431px) {
+                    border-radius: 15px;
+                    height: 140px;
                 }
             }
+        }
+        @media (max-width: 431px) {
+            padding: 0 0.7rem;
         }
     }
 }
@@ -382,11 +500,17 @@ let supplierItemList = [
                 padding-left: 0.2rem;
                 font-size: 1.8rem;
                 color: #0890fc;
+                @media (max-width: 431px) {
+                    font-size: 0.8rem;
+                }
             }
             .marquee {
                 .notice-text {
-                    font-size: 22px;
+                    font-size: 12px;
                 }
+            }
+            @media (max-width: 431px) {
+                padding: 0 0 7px 0;
             }
         }
         .buttons {
@@ -410,7 +534,17 @@ let supplierItemList = [
                     color: #fff;
                     border: none;
                 }
+                @media (max-width: 431px) {
+                    padding: 9px 0;
+                    font-size: 12px;
+                    border-radius: 4px;
+                }
             }
+        }
+        @media (max-width: 431px) {
+            border-radius: 10px;
+            padding: 0.8rem;
+            margin: 0.7rem;
         }
     }
 }
@@ -618,11 +752,20 @@ let supplierItemList = [
                     background: linear-gradient(0deg, #27478e 0%, #3f3c6f 100%);
                     box-shadow: 0 1px #5bb2f6;
                 }
+                .image {
+                    @media (max-width: 431px) {
+                        display: flex;
+                        width: 60%;
+                    }
+                }
                 @media (max-width: 576px) {
+                    border-radius: 20px;
                     height: 18vw;
                 }
                 @media (max-width: 431px) {
-                    height: 25vw;
+                    border-radius: 17px;
+                    width: 4rem;
+                    height: 15vw;
                 }
             }
         }
@@ -649,6 +792,9 @@ let supplierItemList = [
                             width: 450px;
                             border-radius: 10px;
                             overflow: hidden;
+                            @media (max-width: 431px) {
+                                width: 250px;
+                            }
                         }
                         .content {
                             position: absolute;
@@ -664,6 +810,9 @@ let supplierItemList = [
                                 font-size: 30px;
                                 font-weight: 400;
                                 color: #fff;
+                                @media (max-width: 576px) {
+                                    font-size: 14px;
+                                }
                             }
                             .join-btn {
                                 padding: 10px 45px;
@@ -679,6 +828,10 @@ let supplierItemList = [
                                     #dc0c51 0%,
                                     #ff8282 100%
                                 );
+                                @media (max-width: 576px) {
+                                    font-size: 14px;
+                                    padding: 5px 25px;
+                                }
                             }
                         }
                     }
@@ -713,14 +866,14 @@ let supplierItemList = [
                                 font-size: 25px;
                                 font-style: normal;
                                 color: #fff;
+                                @media (max-width: 576px) {
+                                    font-size: 14px;
+                                }
                             }
                         }
 
                         @media (max-width: 576px) {
-                            width: 48%;
-                        }
-                        @media (max-width: 431px) {
-                            width: 100%;
+                            width: 31.6%;
                         }
                     }
                 }
@@ -728,6 +881,13 @@ let supplierItemList = [
             @media (max-width: 576px) {
                 margin-top: 30px;
             }
+            @media (max-width: 431px) {
+                margin-top: 0;
+            }
+        }
+        @media (max-width: 576px) {
+            padding: 0 0.7rem 20px 0.7rem;
+            gap: 10px;
         }
     }
 }
@@ -740,6 +900,10 @@ let supplierItemList = [
     right: 3.5rem;
     top: -40px;
     width: 10px;
+    @media (max-width: 431px) {
+        right: 1.5rem;
+        top: -20px;
+    }
 }
 :deep(.VueCarousel-navigation-button) {
     width: 3.7rem;
@@ -749,6 +913,11 @@ let supplierItemList = [
     font-family: none;
     color: #fff;
     font-size: 35px;
+    @media (max-width: 431px) {
+        width: 1.7rem;
+        height: 1.6rem;
+        font-size: 18px;
+    }
 }
 :deep(.VueCarousel-navigation-prev) {
     background: linear-gradient(0deg, #2f2b4f 0%, #201e3a 100%);
